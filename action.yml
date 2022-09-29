@@ -1,12 +1,12 @@
-name: 'Check for Valid JSON'
-description: 'Parses a JSON object from a file, or fails'
+name: 'Get Version from package.json'
+description: 'Reads the "version" key from a json file'
 inputs:
-  path-to-file:  # id of input
-    description: 'path to JSON file to attempt to parse'
+  path-to-package-json:  # id of input
+    description: 'path to package.json'
     required: true
 outputs:
-  is-valid-json:
-    description: 'whether the JSON file was parsed successfully'
+  version:
+    description: 'current version in package.json'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'

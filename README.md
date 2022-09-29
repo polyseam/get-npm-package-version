@@ -1,19 +1,18 @@
-# is-valid-json action
+# get-version-from-package-json
 
-This action returns true if a given file is a valid JSON file, otherwise it fails
+This action returns the "version" key from a JSON file, or it fails
 
 ## Inputs
 
-## `path-to-file`
+## `path-to-package-json`
 
-**Required** The path to the JSON file in your repo to evaluate.
+**Required** The path to the JSON file in your repo to read the version key from
 
 ## Outputs
 
-## `is-valid-json`
+## `version`
 
-Whether the provided repo path holds a valid JSON file
-
+The version key from the JSON object you provided
 ## Example usage
 ```yaml
 on:
@@ -26,14 +25,14 @@ jobs:
     name: A job to test whether the is-valid-json is working properly
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: check-validity
-        uses: johnstonmatt/is-valid-json-action@v.1.0.1
-        id: check-validity
+        uses: actions/checkout@v3
+      - name: get-version-from-package-json
+        uses: polyseam/get-version-from-package-json@v.1.0.0
+        id: get-version-from-package-json
         with:
-          path-to-file: './test-data/valid.json'
+          path-to-file: './test-data/package.json'
       - name: print-validity
-        run: echo "The valid file was valid JSON"
+        run: echo "The version key in your json is ${{steps.get-version-from-package-json.outputs.version}}"
 ```
 
 ## Notes:

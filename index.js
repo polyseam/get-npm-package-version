@@ -3,27 +3,19 @@ const github = require('@actions/github');
 const fs = require('fs')
 const path = require('path')
 
-function isValidJSON(text) {
-    try {
-        JSON.parse(text);
-        return true;
-    } catch {
-        return false;
-    }
-}
 
 try {
-    // `pathToFile` input defined in action metadata file
-    const pathToFile = core.getInput('path-to-file');
-    console.log(`attempting to parse ${pathToFile}`);
+    // `pathToPackageJson` input defined in action metadata file
+    const pathToPackageJson = core.getInput('path-to-package-json');
+    console.log(`attempting to parse ${pathToPackageJson}`);
 
     fs.readFile(
-        path.join(process.env.GITHUB_WORKSPACE, pathToFile), 'utf8', (err, data) => {
+        path.join(process.env.GITHUB_WORKSPACE, pathToPackageJson), 'utf8', (err, data) => {
             if (!err) {
-                const result = isValidJSON(data);
-                result ? core.setOutput("is-valid-json", true) : core.setFailed(`file at "${pathToFile}" is not valid JSON`);
+                const result = JSON.parse(data);
+                result?.version ? core.setOutput("version", result.version) : core.setFailed(`unable to parse version from ${pathToPackageJson}`);
             } else {
-                core.setFailed(`failed to read file at "${pathToFile}"`);
+                core.setFailed(`failed to read package.json at "${pathToPackageJson}"`);
             }
         }
     )

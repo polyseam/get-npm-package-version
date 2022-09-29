@@ -8,12 +8,12 @@ jobs:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: check-validity
+        uses: actions/checkout@v3
+      - name: get-version-from-package-json
         uses: ./ # Uses an action in the root directory
-        id: check-validity
+        id: get-version-from-package-json
         with:
-          path-to-file: './test-data/valid.json'
+          get-version-from-package-json : './test-data/package.json'
       - name: print-validity
-        run: echo "The valid file was valid JSON ${{ steps.check-validity.outputs.is-valid-json }}"
+        run: echo "The version key in your json was ${{ steps.get-version-from-package-json.outputs.version }}"
      
