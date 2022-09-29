@@ -31,7 +31,7 @@ jobs:
         id: get-version-from-package-json
         with:
           path-to-file: './test-data/package.json'
-      - name: print-validity
+      - name: print-version
         run: echo "The version key in your json is ${{steps.get-version-from-package-json.outputs.version}}"
 ```
 
