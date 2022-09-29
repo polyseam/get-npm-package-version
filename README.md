@@ -20,9 +20,9 @@ on:
     branches:
       - main
 jobs:
-  test_is-valid-json-action:
+  get-version-from-package-json-action:
     runs-on: ubuntu-latest
-    name: A job to test whether the is-valid-json is working properly
+    name: Test get-version-from-package-json
     steps:
       - name: Checkout
         uses: actions/checkout@v3
