@@ -1,5 +1,5 @@
 {
-  "name": "get-version-from-package-json",
+  "name": "get-version-key-from-json",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polyseam/get-version-from-package-json.git"
+    "url": "git+https://github.com/polyseam/get-version-key-from-json.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/polyseam/get-version-from-package-json/issues"
+    "url": "https://github.com/polyseam/get-version-key-from-json/issues"
   },
-  "homepage": "https://github.com/polyseam/get-version-from-package-json",
+  "homepage": "https://github.com/polyseam/get-version-key-from-json",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0"

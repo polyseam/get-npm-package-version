@@ -6,7 +6,7 @@ const path = require('path')
 
 try {
     // `pathToPackageJson` input defined in action metadata file
-    const pathToPackageJson = core.getInput('path-to-package-json');
+    const pathToPackageJson = core.getInput('path-to-json');
     console.log(`attempting to parse ${pathToPackageJson}`);
 
     fs.readFile(
